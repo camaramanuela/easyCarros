@@ -1,22 +1,85 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 function ListCars() {
-  const history = useHistory();
-
-  async function handleLogin(e) {
-    e.preventDefault();
-    history.push('/');
-  } 
-
   return (
-    <div>
-      <p>ListCars</p>
+    <div className="cars-container">
+      <header>
+        <span>Menu</span>
 
-      <form onSubmit = { handleLogin } >      
-        <button type="submit">Sair</button>
-      </form>
+        <span>Veículos</span>
 
+        <Link type="button" to="/" className="logout">
+          Sair
+        </Link>
+      </header>
+      <main>
+        
+        <section className="addcar">
+          <h4>Adicionar novo veículo</h4>
+          <form>
+            <input placeholder="Placa" />
+            <button className="add">+</button>
+          </form>
+        </section>
+        
+        <section className="items">
+        <h4>Veículos</h4>
+          <ul>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+            <li>
+              <span>AKH9182</span>
+              <button>x</button>
+            </li>
+          </ul>
+        </section>
+        
+      </main>
     </div>
   );
 }

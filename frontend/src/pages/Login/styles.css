@@ -14,10 +14,16 @@
   width: 100%;
   max-width: 450px;
   padding: 100px 40px;
-  border: 1px solid #e3e3e3;
+  background-color: #fff;
   border-radius: 8px;
 }
 
+@media (max-width: 450px) {
+  .login-container section.form {
+    height: 100vh;
+    padding: 18vh 40px;
+  } 
+}
 
 .login-container section.form form h1{
   font-size: 22px;

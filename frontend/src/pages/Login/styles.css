@@ -1,0 +1,36 @@
+.login-container {
+  width: 100%;
+  max-width: 1120px;
+  height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container section.form {
+  width: 100%;
+  max-width: 450px;
+  padding: 100px 40px;
+  border: 1px solid #e3e3e3;
+  border-radius: 8px;
+}
+
+
+.login-container section.form form h1{
+  font-size: 22px;
+  margin-bottom: 32px;
+  color: #505050;
+}
+
+.login-container button {
+    margin-top: 30px;
+}
+
+.login-container img {
+    height: 160px;
+    margin-bottom: 15px;
+}
+  

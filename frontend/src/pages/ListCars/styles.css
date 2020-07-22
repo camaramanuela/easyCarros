@@ -25,6 +25,16 @@
     padding: 20px;
 }
 
+.cars-container header button {
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
 .cars-container header span {
     color: #fff;
     padding: 20px;

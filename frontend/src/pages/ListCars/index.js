@@ -13,6 +13,7 @@ function ListCars() {
 
   // carrega as placas, se o token é válido
   useEffect(() => {
+
     axios({
       method: 'get',
       url: 'http://localhost:8181/vehicle',
@@ -20,11 +21,12 @@ function ListCars() {
         'content-type': 'application/json',
         Authorization: `Bearer ${token}`
       }
-    }).then(response => {
+    })
+    .then(response => {
       setPlates(response.data.data);
     })
     // atualiza quando um nova placa é adicionada
-  }, [token,plates]);
+  }, [token, plates]);
 
 
   async function handleAddPlate(e) {
@@ -47,6 +49,7 @@ function ListCars() {
             "plate": addPlate
           }
         });
+        alert('Placa ' + addPlate + ' adicionada');
       } 
       catch (err) {
         alert ('Erro, tente novamente')
@@ -55,6 +58,34 @@ function ListCars() {
     } else {
       alert('Formato de placa inválido');
     }
+  }
+
+  // Deleta a placa correspondente
+  async function handleDeletePlate(id, plate) {
+
+    
+    if (window.confirm("Tem certeza que deseja excluir a placa " + plate) === true) {
+      try {
+        await  axios ({
+          method: 'delete',
+          url: `http://localhost:8181/vehicle/${id}`,
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`
+          } 
+        });
+        setPlates(plates.filter(plate => plate.id !== id));
+  
+      } catch (err) {
+        alert('Erro ao deletar caso, tente novamente');
+      }    
+    } 
+
+
+    
+
+
+
   }
 
 
@@ -82,6 +113,7 @@ function ListCars() {
           <h4>Adicionar novo veículo</h4>
           <form onSubmit = { handleAddPlate } >
             <input 
+              id = "addPlate"
               placeholder="Placa"
               value = {addPlate} 
               onChange = {e => setAddPlate(e.target.value) }
@@ -97,7 +129,7 @@ function ListCars() {
           {plates.map(plate => (
             <li key={plate.id} >
               <span>{plate.plate}</span>
-              <button>x</button>
+              <button onClick={() => handleDeletePlate(plate.id, plate.plate)} type="button">x</button>
           </li>
           ))}
         </ul>

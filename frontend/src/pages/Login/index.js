@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import axios from 'axios';
 
 import logoImg from '../../assets/logo.png';
 import './styles.css';
@@ -11,10 +11,34 @@ function Login() {
 
   const history = useHistory();
 
-  async function handleLogin(e) {
+
+  function handleLogin(e) {
     e.preventDefault();
-    history.push('/carros');
+
+    (!email || !password ) ? alert('Preencha todos os campos') : verificaCredenciais();
   } 
+
+  async function verificaCredenciais() {
+     await axios({
+        method: 'post',
+        url: 'http://localhost:8181/auth',
+        headers: {
+          'content-type': 'application/json'
+        }, 
+        data: {
+          "email": email, 
+          "password": password
+        }
+      })
+      .then(function(response) {
+        localStorage.setItem('token', response.data.data.token);
+        history.push('/carros');
+      })
+      .catch(function() {
+        alert("Login inválido, tente novamente")
+      });
+  }
+  
 
   return (
     <div className="login-container">
